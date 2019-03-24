@@ -14,7 +14,8 @@ public class CourseEntity {
     private String name;
     private String place;
 
-    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+// jezeli tu jest one to many przez course to w studencie bedzie manyToOne
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY) //fetchType lazy lub eager. lazy - dziala na tych obiektach ktore sa obecnie potrzebne, najpierw pobieramy kurs a potem ustawiamy np imie dla studenta
     private Set<StudentEntity> students = new HashSet<>();
 
     CourseEntity() {}

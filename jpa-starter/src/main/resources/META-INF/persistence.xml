@@ -7,6 +7,7 @@
     <persistence-unit name="pl.sda.jpa.starter">
         <!-- lista klas do mapowania do bazy danych -->
         <class>pl.sda.jpa.starter.basic.CoachEntity</class>
+        <class>pl.sda.jpa.starter.basic.StudentEntity</class>
 
         <!-- domyślnie mechanizmy JPA skanują wszystkie dostępne pakiety i dodają do PU encje które znajdą - ta opcja wyłącza tę funkcjonalność -->
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
@@ -42,7 +43,7 @@
             <property name="javax.persistence.jdbc.password" value="root" />
 
             <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="none" />
+            <property name="hibernate.hbm2ddl.auto" value="create" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
         </properties>
     </persistence-unit>

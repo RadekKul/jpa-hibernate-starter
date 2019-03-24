@@ -13,14 +13,14 @@ public class StudentEntity {
     private String name;
     private String seat;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "add_id")
+    @OneToOne(cascade = {CascadeType.ALL}) // ma dolaczyc one to one, przez CascadeType.ALL np przy usuwaniu/tworzeniu nowego studenta, mamy wypelnic wszystkie jego dane, jak go usuniemy to nie chcemy zostawic jego adresu tylko usuwamy wszystko
+    @JoinColumn(name = "add_id")   // w encji studentow jest kolumna add_id i od tej encji bedziemy sie odnosili do addressow,a  w AddresEntity w address mamy powiedziane ze jest to mapowane
     private AddressEntity address;
 
     /**
      * Uwaga w adnotacji @ManyToOne brak atrybutu: mappedBy ! - w tej relacje zawsze strona z @OneToMany jest właścicielem!
      */
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.ALL}) // to nie jest wlasciciel, wlascicielem jest course
     private CourseEntity course;
 
     @ManyToMany(cascade = {CascadeType.ALL})

@@ -52,10 +52,14 @@ public class JpaRelations {
             entityManager.getTransaction().begin();
 
             CourseEntity course = new CourseEntity("JavaGda11", "Sopot");
-            StudentEntity student = new StudentEntity("Jan Kowalski");
-            course.addStudent(student);
+            StudentEntity student1 = new StudentEntity("Jan Kowalski");
+            StudentEntity student2 = new StudentEntity("Adam Nowak");
+            course.addStudent(student1);
+            course.addStudent(student2);    // jezeli dodajemy dwoch studentow to obydwu z nich musimy dac do persista, hibernate wtedy zinsertuje jeden kurs a do niego dwoch studentow
 
-            entityManager.persist(student);
+            entityManager.persist(course);  // jezeli bysmy zostawili sam persist course to by nam dalo sam kurs bez studentow, bo course nie obchodzi nic innego po za swoimi danymi
+            entityManager.persist(student1);    // dopiero tutaj sa dane studentow i to do jakiego kursu przyporzodkuje go hibernate, jezeli by nie bylo coursu to go stworzy wyzej
+            entityManager.persist(student2);
 
             StudentEntity studentEntity = entityManager.find(StudentEntity.class, 1);
             logger.info("Student: {}", studentEntity);
@@ -85,12 +89,25 @@ public class JpaRelations {
             student.addSkill(skill2);
             student.addSkill(skill3);
 
-            entityManager.persist(student);
+            StudentEntity student2 = new StudentEntity("Adam Nowak");
+            student2.addSkill(skill2);
 
-            StudentEntity studentEntity = entityManager.find(StudentEntity.class, 1);
+            entityManager.persist(student);
+            entityManager.persist(student2);
+
+            StudentEntity studentEntity = entityManager.find(StudentEntity.class, 1); // to jest szukanie po glownym kluczu akurat tutaj bo nie pokazujemy mu zmiennej po jakiej ma szukac tylko odrazu obiekt ktory jest primary key
             logger.info("Student: {}", studentEntity);
 
             entityManager.getTransaction().commit();
+
+            entityManager.getTransaction().begin();
+            StudentEntity studentToRemove = entityManager.find(StudentEntity.class,1);
+            entityManager.remove(studentToRemove);
+
+            entityManager.getTransaction().commit();
+
+
+
         } finally {
             if (entityManager != null) {
                 entityManager.close();
@@ -101,9 +118,9 @@ public class JpaRelations {
     public static void main(String[] args) {
         JpaRelations jpaQueries = new JpaRelations();
         try {
-            jpaQueries.oneToOne();
+            //jpaQueries.oneToOne();
             //jpaQueries.oneToMany();
-            //jpaQueries.manyToMany();
+            jpaQueries.manyToMany();
         } catch (Exception e) {
             logger.error("", e);
         } finally {

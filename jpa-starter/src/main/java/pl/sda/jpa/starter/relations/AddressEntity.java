@@ -10,6 +10,7 @@ public class AddressEntity {
     private Integer id;
     private String city;
     private String street;
+
     @OneToOne(mappedBy = "address")
     private StudentEntity student;
 

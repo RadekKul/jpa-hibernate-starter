@@ -44,7 +44,7 @@ public class JpaLifeCycle {
             EntityTransaction transaction = entityManager.getTransaction();
             transaction.begin();
 
-            logger.info("Before: {}", javaGda11);
+            logger.info("Before: {}", javaGda11);   // {} oznacza to co w String format np %s, czyli w klamerki wstawi zmienna podana dalej
             logger.info("Contains: {}", entityManager.contains(javaGda11));
             /**
              * Zapisujemy nowy obiekt w Persistence Context, encja w tej chwili staje się zarządzana przez EntityManager

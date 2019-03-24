@@ -22,7 +22,7 @@ public class CoachEntity {
      */
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "name")
+    @Column(name = "name") // jezeli kolumna ma taka sama nazwe jak nazwa pola to nie potrzebna jest w ogole ta adnotacja, jezeli sa rozne nazwy to trzeba zaznaczyc
     private String fullName;
 
     /**

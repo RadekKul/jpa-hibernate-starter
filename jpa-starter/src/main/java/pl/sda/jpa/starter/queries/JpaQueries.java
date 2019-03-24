@@ -28,6 +28,8 @@ public class JpaQueries {
         entityManagerFactory.close();
     }
 
+    //TODO: wszystko oprocz inheritance a z JPAquery tylko ta klaska, powtorz sobie to co bylo wczesniej bo jest spoko- sa zadania a tam teoria, tam jest tez wytlumaczone onetomany itp co znaczy i jak to pisac
+
     private void simpleQuery() {
         EntityManager entityManager = null;
         try {
@@ -67,7 +69,7 @@ public class JpaQueries {
              *  sortujemy po nazwie
              */
             TypedQuery<Object[]> scalarQuery = entityManager.createQuery("SELECT c.name, c.place FROM CourseEntity c ORDER BY c.name ASC", Object[].class);
-            List<Object[]> scalarResultList = scalarQuery.getResultList();
+            List<Object[]> scalarResultList = scalarQuery.getResultList();  // z tego wyzej dostajemy liste tablic gdzie pierwszymi elementami są name a drugimi place, dlatego ponizej bierzemy firstRow
             Object[] firstRow = scalarResultList.get(0);
             logger.info("Row 1, column 1: " + firstRow[0]);
             logger.info("Row 1, column 2: " + firstRow[1]);
@@ -76,6 +78,7 @@ public class JpaQueries {
             /**
              *  zawężamy tylko do kursów z Sopotu i wrzucamy dane do obiektu CourseInfo
              */
+            // te pobrane c.name i c.place wrzucamy do konstruktora CourseInfo
             List<CourseInfo> courseInfoList = entityManager.createQuery("SELECT new pl.sda.jpa.starter.queries.entities.CourseInfo(c.name, c.place) FROM CourseEntity c WHERE c.place = :place", CourseInfo.class)
                     .setParameter("place", "Sopot")
                     .getResultList();
@@ -94,8 +97,8 @@ public class JpaQueries {
              *  dodajemy stronicowanie
              */
             simpleQuery = entityManager.createQuery("FROM CourseEntity");
-            simpleQuery.setFirstResult(1);
-            simpleQuery.setMaxResults(2);
+            simpleQuery.setFirstResult(1);  // zaczynajac od pierwszego, wyciagnijmy maxymalnie 2 rezultaty, czyli pierwszy i drugi
+            simpleQuery.setMaxResults(2);   // ile max rezultatow wyciagnac
             resultList = simpleQuery.getResultList();
             printList(resultList);
 
