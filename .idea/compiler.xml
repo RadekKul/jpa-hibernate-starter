@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="commons" />
+        <module name="hibernate-starter" />
+        <module name="jdbc-starter" />
+        <module name="jpa-starter" />
+        <module name="library-manager" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="commons" target="1.8" />
+      <module name="hibernate-starter" target="1.8" />
+      <module name="javadb-starter" target="1.8" />
+      <module name="jdbc-starter" target="1.8" />
+      <module name="jpa-starter" target="1.8" />
+      <module name="library-manager" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/commons/commons.iml" filepath="$PROJECT_DIR$/commons/commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hibernate-starter/hibernate-starter.iml" filepath="$PROJECT_DIR$/hibernate-starter/hibernate-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/javadb-starter.iml" filepath="$PROJECT_DIR$/.idea/javadb-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdbc-starter/jdbc-starter.iml" filepath="$PROJECT_DIR$/jdbc-starter/jdbc-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jpa-starter/jpa-starter.iml" filepath="$PROJECT_DIR$/jpa-starter/jpa-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library-manager/library-manager.iml" filepath="$PROJECT_DIR$/library-manager/library-manager.iml" />
+    </modules>
+  </component>
+</project>
